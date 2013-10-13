@@ -110,7 +110,8 @@ void MainComponent::buttonClicked (Button* buttonThatWasClicked)
     {
         //[UserButtonCode_quitButton] -- add your button handler code here..
 
-        JUCEApplication::quit();
+        if (JUCEApplication* app = JUCEApplication::getInstance())
+            app->systemRequestedQuit();
 
         //[/UserButtonCode_quitButton]
     }

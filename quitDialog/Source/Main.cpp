@@ -46,7 +46,9 @@ public:
     {
         // When the user presses the close button, we'll tell the app to quit. This
         // HelloWorldWindow object will be deleted by the JUCEHelloWorldApplication class.
-        JUCEApplication::quit();
+        
+        if (JUCEApplication* app = JUCEApplication::getInstance())
+            app->systemRequestedQuit();
     }
 };
 
@@ -104,6 +106,15 @@ public:
 
     void anotherInstanceStarted (const String& commandLine)
     {
+    }
+    
+    void systemRequestedQuit() override
+    {
+        const bool res = AlertWindow::showOkCancelBox (AlertWindow::WarningIcon, "Are You sure you want to quit?",
+                                                       "Press OK to quit the application or Cancel to return.");
+        
+        if (res)
+            JUCEApplication::systemRequestedQuit();
     }
 
 private:
