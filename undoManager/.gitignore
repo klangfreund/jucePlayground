@@ -1,0 +1,4 @@
+# .gitignore
+
+Builds/MacOSX/build/
+
