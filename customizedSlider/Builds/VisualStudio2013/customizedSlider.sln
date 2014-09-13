@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2013
+Project("{A7737BC9-E761-3EDD-A7E7-625D0084A6D6}") = "customizedSlider", "customizedSlider.vcxproj", "{031D7557-79F3-121A-EB1D-68811B0C175D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{031D7557-79F3-121A-EB1D-68811B0C175D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{031D7557-79F3-121A-EB1D-68811B0C175D}.Debug|Win32.Build.0 = Debug|Win32
+		{031D7557-79F3-121A-EB1D-68811B0C175D}.Release|Win32.ActiveCfg = Release|Win32
+		{031D7557-79F3-121A-EB1D-68811B0C175D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
