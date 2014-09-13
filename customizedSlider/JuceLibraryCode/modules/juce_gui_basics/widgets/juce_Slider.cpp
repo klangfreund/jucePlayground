@@ -1006,8 +1006,8 @@ public:
                         valueBox->hideEditor (false);
 
                     const double value = (double) currentValue.getValue();
-                    const double delta = getMouseWheelDelta (value, (wheel.deltaX != 0 ? -wheel.deltaX : wheel.deltaY)
-                                                                        * (wheel.isReversed ? -1.0f : 1.0f));
+                    const double delta = getMouseWheelDelta (value, (std::abs (wheel.deltaX) > std::abs (wheel.deltaY) ?
+                                            -wheel.deltaX : wheel.deltaY) * (wheel.isReversed ? -1.0f : 1.0f));
 
                     if (delta != 0)
                     {
