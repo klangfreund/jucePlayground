@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="zvTSnX" name="TestStandalone" projectType="guiapp" version="0.1.0"
+              bundleIdentifier="com.yourcompany.TestStandalone" includeBinaryInAppConfig="1"
+              jucerVersion="3.1.0">
+  <MAINGROUP id="GgsNSN" name="TestStandalone">
+    <GROUP id="{EBD28837-9B00-3265-B92A-42E0792F4551}" name="PluginSource">
+      <FILE id="sdQtgC" name="PluginEditor.cpp" compile="1" resource="0"
+            file="../Plugin/Source/PluginEditor.cpp"/>
+      <FILE id="f3JV79" name="PluginEditor.h" compile="0" resource="0" file="../Plugin/Source/PluginEditor.h"/>
+      <FILE id="St4NOW" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="../Plugin/Source/PluginProcessor.cpp"/>
+      <FILE id="CAs4Wl" name="PluginProcessor.h" compile="0" resource="0"
+            file="../Plugin/Source/PluginProcessor.h"/>
+    </GROUP>
+    <GROUP id="{897396ED-9C6A-C345-8BC3-74C0ED54127A}" name="Source">
+      <FILE id="vCOssy" name="juce_StandaloneFilterWindow.h" compile="0"
+            resource="0" file="Source/juce_StandaloneFilterWindow.h"/>
+      <FILE id="YRupHi" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
+                       isDebug="1" optimisation="1" targetName="TestStandalone"/>
+        <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
+                       isDebug="0" optimisation="2" targetName="TestStandalone"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../../../res/projects_dev/JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_audio_processors" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_audio_utils" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_core" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_data_structures" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_events" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="1"/>
+  </MODULES>
+  <JUCEOPTIONS/>
+</JUCERPROJECT>
