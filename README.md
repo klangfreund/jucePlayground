@@ -1,6 +1,4 @@
-JUCE Examples
-=============
+JUCE Playground
+===============
 
-A collection of simple projects to demonstrate specific features of [JUCE](http://www.juce.com).
-
-They were created to explore those features for myself.
+A collection of simple projects to explore and demonstrate specific features of [JUCE](http://www.juce.com).
