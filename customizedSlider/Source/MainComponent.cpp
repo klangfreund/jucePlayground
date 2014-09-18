@@ -26,6 +26,10 @@ MainContentComponent::MainContentComponent()
     addAndMakeVisible (&sliderUsingLookAndFeel);
     addAndMakeVisible (&labelCustom);
     addAndMakeVisible (&customSlider);
+
+    // setLookAndFeel is a member function of Component.
+    // Each Component can be assigned with its own LookAndFeel.
+    sliderUsingLookAndFeel.setLookAndFeel (&customLookAndFeel);
 }
 
 MainContentComponent::~MainContentComponent()
@@ -34,7 +38,7 @@ MainContentComponent::~MainContentComponent()
 
 void MainContentComponent::paint (Graphics& g)
 {
-    g.fillAll (Colours::lightgrey);
+    g.fillAll (JUCE_LIVE_CONSTANT (Colours::lightgrey));
 }
 
 void MainContentComponent::resized()

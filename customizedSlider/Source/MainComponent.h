@@ -10,6 +10,7 @@
 #define MAINCOMPONENT_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "CustomLookAndFeel.h"
 
 
 //==============================================================================
@@ -29,6 +30,7 @@ public:
 
 private:
     //==============================================================================
+    CustomLookAndFeel customLookAndFeel;
     Label labelLookAndFeel;
     Slider sliderUsingLookAndFeel;
     Label labelCustom;

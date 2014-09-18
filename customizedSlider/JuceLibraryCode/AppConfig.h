@@ -17,7 +17,9 @@
 //==============================================================================
 // [BEGIN_USER_CODE_SECTION]
 
-// (You can add your own code in this section, and the Introjucer will not overwrite it)
+#ifndef    JUCE_ENABLE_LIVE_CONSTANT_EDITOR
+   #define JUCE_ENABLE_LIVE_CONSTANT_EDITOR 0
+#endif
 
 // [END_USER_CODE_SECTION]
 
@@ -90,7 +92,7 @@
 #endif
 
 #ifndef    JUCE_ENABLE_LIVE_CONSTANT_EDITOR
- //#define JUCE_ENABLE_LIVE_CONSTANT_EDITOR
+ // #define JUCE_ENABLE_LIVE_CONSTANT_EDITOR 1
 #endif
 
 

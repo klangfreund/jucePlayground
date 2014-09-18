@@ -202,6 +202,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\CustomLookAndFeel.cpp">
+      <Filter>customizedSlider\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\MainComponent.cpp">
       <Filter>customizedSlider\Source</Filter>
     </ClCompile>
@@ -1098,6 +1101,9 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\CustomLookAndFeel.h">
+      <Filter>customizedSlider\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\MainComponent.h">
       <Filter>customizedSlider\Source</Filter>
     </ClInclude>

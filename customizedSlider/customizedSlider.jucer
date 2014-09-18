@@ -5,6 +5,10 @@
               jucerVersion="3.1.0">
   <MAINGROUP id="Y9eWQ4" name="customizedSlider">
     <GROUP id="{CB05A2E4-5CD6-359E-6F28-47C2A9AF6AB6}" name="Source">
+      <FILE id="pd1XIp" name="CustomLookAndFeel.cpp" compile="1" resource="0"
+            file="Source/CustomLookAndFeel.cpp"/>
+      <FILE id="Qg20oQ" name="CustomLookAndFeel.h" compile="0" resource="0"
+            file="Source/CustomLookAndFeel.h"/>
       <FILE id="mHYAAc" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
       <FILE id="eJEfFt" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
