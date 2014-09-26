@@ -102,7 +102,6 @@ void CustomLookAndFeel::drawLinearSliderThumb (Graphics& g, int x, int y, int wi
         // Draw the actual knob
         float xThumb = kx - sliderRadius;
         float yThumb = ky - sliderRadius;
-        const Rectangle<float> a (xThumb, yThumb, sliderRadius * 2.0f, sliderRadius * 2.0f);
         const float halfThickness = outlineThickness * 0.5f;
         
         Path p;

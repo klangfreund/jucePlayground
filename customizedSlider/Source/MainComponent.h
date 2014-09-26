@@ -31,9 +31,9 @@ public:
 private:
     //==============================================================================
     CustomLookAndFeel customLookAndFeel;
-    Label labelLookAndFeel;
-    Slider sliderUsingLookAndFeel;
-    Label labelCustom;
+    Label lookAndFeelLabel;
+    Slider lookAndFeelSlider;
+    Label customLabel;
     Slider customSlider;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)

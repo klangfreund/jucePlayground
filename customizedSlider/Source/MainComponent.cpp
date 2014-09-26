@@ -11,25 +11,33 @@
 
 //==============================================================================
 MainContentComponent::MainContentComponent()
-    : labelLookAndFeel (String::empty, "using LookAndFeel"),
-      sliderUsingLookAndFeel (Slider::SliderStyle::LinearVertical, Slider::TextBoxBelow),
-      labelCustom (String::empty, "using inheritance"),
+    : lookAndFeelLabel (String::empty, "using LookAndFeel"),
+      lookAndFeelSlider (Slider::SliderStyle::LinearVertical, Slider::TextBoxBelow),
+      customLabel (String::empty, "using inheritance"),
       customSlider (Slider::SliderStyle::LinearVertical, Slider::TextBoxBelow)
 
 {
-    setSize (300, 400);
+    setSize (300, 600);
     
-    labelLookAndFeel.setJustificationType(Justification::horizontallyCentred);
-    labelCustom.setJustificationType(Justification::horizontallyCentred);
+    // Labels
+    // ------
+    lookAndFeelLabel.setJustificationType(Justification::horizontallyCentred);
+    customLabel.setJustificationType(Justification::horizontallyCentred);
+    addAndMakeVisible (&lookAndFeelLabel);
+    addAndMakeVisible (&customLabel);
     
-    addAndMakeVisible (&labelLookAndFeel);
-    addAndMakeVisible (&sliderUsingLookAndFeel);
-    addAndMakeVisible (&labelCustom);
-    addAndMakeVisible (&customSlider);
-
+    // lookAndFeelSlider
+    // -----------------
     // setLookAndFeel is a member function of Component.
     // Each Component can be assigned with its own LookAndFeel.
-    sliderUsingLookAndFeel.setLookAndFeel (&customLookAndFeel);
+    lookAndFeelSlider.setLookAndFeel (&customLookAndFeel);
+    
+    lookAndFeelSlider.setColour(Slider::thumbColourId, Colours::blue);
+    addAndMakeVisible (&lookAndFeelSlider);
+
+    // customSlider
+    // ------------
+    addAndMakeVisible (&customSlider);
 }
 
 MainContentComponent::~MainContentComponent()
@@ -45,9 +53,9 @@ void MainContentComponent::resized()
 {
     const int border = 10;
     const int labelHeight = 20;
-    labelLookAndFeel.setBounds(border, border, getWidth()/2 - border, labelHeight);
-    sliderUsingLookAndFeel.setBounds(border, labelLookAndFeel.getBottom(), labelLookAndFeel.getWidth(), getHeight() - labelLookAndFeel.getBottom() - border);
+    lookAndFeelLabel.setBounds(border, border, getWidth()/2 - border, labelHeight);
+    lookAndFeelSlider.setBounds(border, lookAndFeelLabel.getBottom(), lookAndFeelLabel.getWidth(), getHeight() - lookAndFeelLabel.getBottom() - border);
     
-    labelCustom.setBounds(getWidth()/2, border, getWidth()/2 - border, labelHeight);
-    customSlider.setBounds(getWidth()/2, labelCustom.getBottom(), labelCustom.getWidth(), getHeight() - labelCustom.getBottom() - border);
+    customLabel.setBounds(getWidth()/2, border, getWidth()/2 - border, labelHeight);
+    customSlider.setBounds(getWidth()/2, customLabel.getBottom(), customLabel.getWidth(), getHeight() - customLabel.getBottom() - border);
 }
