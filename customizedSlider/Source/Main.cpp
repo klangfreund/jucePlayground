@@ -67,7 +67,9 @@ public:
         {
             setContentOwned (new MainContentComponent(), true);
 
-            centreWithSize (getWidth(), getHeight());
+            setCentrePosition(Desktop::getInstance().getDisplays().getMainDisplay().userArea.getWidth()
+                              - getWidth() / 2,
+                              Desktop::getInstance().getDisplays().getMainDisplay().userArea.getHeight() / 2);
             setVisible (true);
             setResizable(true, true);
             setUsingNativeTitleBar(true);
