@@ -11,17 +11,37 @@
 #include "CustomLookAndFeel.h"
 
 
+int CustomLookAndFeel::getSliderThumbRadius (Slider& slider)
+{
+    if (slider.isVertical())
+    {
+        
+        const float thumbWidth = jmin (slider.getWidth() - 2 * spaceBetweenThumbAndComponentBorder,
+                                       maxThumbWidthVertical);
+        const float thumbHeight = thumbWidth * heightToWidthRatioVertical;
+        
+        return thumbHeight / 2.0f + spaceBetweenThumbAndComponentBorder;
+    }
+    else
+    {
+        return LookAndFeel_V3::getSliderThumbRadius(slider);
+    }
+}
+
 void CustomLookAndFeel::drawLinearSlider (Graphics& g, int x, int y, int width, int height,
                                           float sliderPos, float minSliderPos, float maxSliderPos,
                                           const Slider::SliderStyle style, Slider& slider)
 {
-    // Fill the whole background of the slider
+    // Draw the background of the slider
+    //          ----------
     g.fillAll (slider.findColour (Slider::backgroundColourId));
 
     if (style != Slider::LinearBar && style != Slider::LinearBarVertical)
 
     {
+        // Draw the track
         drawLinearSliderBackground (g, x, y, width, height, sliderPos, minSliderPos, maxSliderPos, style, slider);
+        // and the thumb.
         drawLinearSliderThumb (g, x, y, width, height, sliderPos, minSliderPos, maxSliderPos, style, slider);
     }
 }
@@ -32,7 +52,11 @@ void CustomLookAndFeel::drawLinearSliderBackground (Graphics& g, int x, int y, i
                                                     float /*maxSliderPos*/,
                                                     const Slider::SliderStyle /*style*/, Slider& slider)
 {
-    const float sliderRadius = (float) (getSliderThumbRadius (slider) - 2);
+    // Draw the track of the slider
+    //          -----
+    const float trackWidth = (float) (jmin (7,
+                                              slider.getHeight() / 2,
+                                              slider.getWidth() / 2));
     
     const Colour trackColour (slider.findColour (Slider::trackColourId));
     const Colour gradCol1 (trackColour.overlaidWith (Colours::black.withAlpha (slider.isEnabled() ? 0.5f : 0.25f)));
@@ -41,26 +65,26 @@ void CustomLookAndFeel::drawLinearSliderBackground (Graphics& g, int x, int y, i
     
     if (slider.isHorizontal())
     {
-        const float iy = y + height * 0.5f - sliderRadius * 0.5f;
-        const float ih = sliderRadius;
+        const float iy = y + height * 0.5f - trackWidth * 0.5f;
+        const float ih = trackWidth;
         
         g.setGradientFill (ColourGradient (gradCol1, 0.0f, iy,
                                            gradCol2, 0.0f, iy + ih, false));
         
-        indent.addRoundedRectangle (x - sliderRadius * 0.5f, iy,
-                                    width + sliderRadius, ih,
+        indent.addRoundedRectangle (x - trackWidth * 0.5f, iy,
+                                    width + trackWidth, ih,
                                     5.0f);
     }
     else
     {
-        const float ix = x + width * 0.5f - sliderRadius * 0.5f;
-        const float iw = sliderRadius;
+        const float ix = x + width * 0.5f - trackWidth * 0.5f;
+        const float iw = trackWidth;
         
         g.setGradientFill (ColourGradient (gradCol1, ix, 0.0f,
                                            gradCol2, ix + iw, 0.0f, false));
         
-        indent.addRoundedRectangle (ix, y - sliderRadius * 0.5f,
-                                    iw, height + sliderRadius,
+        indent.addRoundedRectangle (ix, y - trackWidth * 0.5f,
+                                    iw, height + trackWidth,
                                     5.0f);
     }
     
@@ -76,49 +100,50 @@ void CustomLookAndFeel::drawLinearSliderThumb (Graphics& g, int x, int y, int wi
                                                const Slider::SliderStyle style,
                                                Slider& slider)
 {
-    const float sliderRadius = (float) (getSliderThumbRadius (slider) - 2);
-    
-    bool isDownOrDragging = slider.isEnabled() && (slider.isMouseOverOrDragging() || slider.isMouseButtonDown());
-    Colour knobColour (slider.findColour (Slider::thumbColourId).withMultipliedSaturation ((slider.hasKeyboardFocus (false) || isDownOrDragging) ? 1.3f : 0.9f)
-                       .withMultipliedAlpha (slider.isEnabled() ? 1.0f : 0.7f));
-    
-    if (style == Slider::LinearHorizontal || style == Slider::LinearVertical)
+    if (style == Slider::LinearVertical)
     {
-        float kx, ky;
+        bool isDownOrDragging = slider.isEnabled() && (slider.isMouseOverOrDragging() || slider.isMouseButtonDown());
+        Colour knobColour (slider.findColour (Slider::thumbColourId).withMultipliedSaturation ((slider.hasKeyboardFocus (false) || isDownOrDragging) ? 1.3f : 0.9f)
+                           .withMultipliedAlpha (slider.isEnabled() ? 1.0f : 0.7f));
         
-        if (style == Slider::LinearVertical)
-        {
-            kx = x + width * 0.5f;
-            ky = sliderPos;
-        }
-        else
-        {
-            kx = sliderPos;
-            ky = y + height * 0.5f;
-        }
+        const float thumbWidth = jmin (slider.getWidth() - 2 * spaceBetweenThumbAndComponentBorder,
+                                       maxThumbWidthVertical);
+        const float thumbHeight = thumbWidth * heightToWidthRatioVertical;
         
-        const float outlineThickness = slider.isEnabled() ? 0.8f : 0.3f;
-        
-        // Draw the actual knob
-        float xThumb = kx - sliderRadius;
-        float yThumb = ky - sliderRadius;
-        const float halfThickness = outlineThickness * 0.5f;
+        const float xCenter = x + width * 0.5f;
+        const float yCenter = sliderPos;
+        const float xThumb = xCenter - 0.5f * thumbWidth;
+        const float yThumb = yCenter - 0.5f * thumbHeight;
         
         Path p;
-        p.addEllipse (xThumb + halfThickness, yThumb + halfThickness, sliderRadius * 2.0f - outlineThickness, sliderRadius * 2.0f - outlineThickness);
+        p.addRoundedRectangle(xThumb, yThumb, thumbWidth, thumbHeight, 5.0f);
         
-        const DropShadow ds (Colours::black, 1, Point<int> (0, 0));
+        // Drop shadow
+        const DropShadow ds (Colours::black, 4, Point<int> (0, 0));
         ds.drawForPath (g, p);
         
-        g.setColour (knobColour);
-        g.fillPath (p);
-        
-        g.setColour (knobColour.brighter());
+        // Outline
+        const float outlineThickness = slider.isEnabled() ? 0.8f : 0.3f;
+        g.setColour (Colours::black);
+        //g.setColour (knobColour.darker());
         g.strokePath (p, PathStrokeType (outlineThickness));
+        
+        // Fill
+        ColourGradient gradient (knobColour.darker(), xThumb, yThumb,
+                                 knobColour.darker(), xThumb, yThumb + thumbHeight, false);
+        gradient.addColour (0.5, knobColour.brighter());
+        g.setGradientFill(gradient);
+        g.fillPath (p);
+//        g.setColour (knobColour);
+//        g.fillPath (p);
+        
+        // Middle line
+        g.setColour(Colours::black);
+        g.drawLine(xThumb, yCenter, xThumb + thumbWidth, yCenter);
     }
     else
     {
         // Just call the base class for the demo
-        LookAndFeel_V2::drawLinearSliderThumb (g, x, y, width, height, sliderPos, minSliderPos, maxSliderPos, style, slider);
+        LookAndFeel_V3::drawLinearSliderThumb (g, x, y, width, height, sliderPos, minSliderPos, maxSliderPos, style, slider);
     }
 }

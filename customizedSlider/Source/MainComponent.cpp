@@ -17,7 +17,7 @@ MainContentComponent::MainContentComponent()
       customSlider (Slider::SliderStyle::LinearVertical, Slider::TextBoxBelow)
 
 {
-    setSize (300, 600);
+    setSize (250, 600);
     
     // Labels
     // ------
@@ -32,7 +32,6 @@ MainContentComponent::MainContentComponent()
     // Each Component can be assigned with its own LookAndFeel.
     lookAndFeelSlider.setLookAndFeel (&customLookAndFeel);
     
-    lookAndFeelSlider.setColour(Slider::thumbColourId, Colours::blue);
     addAndMakeVisible (&lookAndFeelSlider);
 
     // customSlider
@@ -47,6 +46,8 @@ MainContentComponent::~MainContentComponent()
 void MainContentComponent::paint (Graphics& g)
 {
     g.fillAll (JUCE_LIVE_CONSTANT (Colours::lightgrey));
+    
+    lookAndFeelSlider.setColour(Slider::thumbColourId, JUCE_LIVE_CONSTANT (Colours::white));
 }
 
 void MainContentComponent::resized()
