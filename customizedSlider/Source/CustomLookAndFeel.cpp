@@ -111,10 +111,14 @@ void CustomLookAndFeel::drawLinearSliderThumb (Graphics& g, int x, int y, int wi
         const float thumbHeight = thumbWidth * heightToWidthRatioVertical;
         
         const float xCenter = x + width * 0.5f;
-        const float yCenter = sliderPos;
+        // Originally it was yCenter = sliderPos. But that way the thumb (and especially the center line) did
+        // not always look the same because of aliasing. With this additional rounding it is ensured that the
+        // vertical position of the thumb "snaps" to the closest pixel and therefore looks always the same.
+        const float yCenter = (int)(sliderPos) + 0.5f;
         const float xThumb = xCenter - 0.5f * thumbWidth;
         const float yThumb = yCenter - 0.5f * thumbHeight;
         
+        // The shape of the thumb
         Path p;
         p.addRoundedRectangle(xThumb, yThumb, thumbWidth, thumbHeight, 5.0f);
         
