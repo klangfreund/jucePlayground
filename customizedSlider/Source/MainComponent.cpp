@@ -13,9 +13,7 @@
 MainContentComponent::MainContentComponent()
     : lookAndFeelLabel (String::empty, "using LookAndFeel"),
       lookAndFeelSlider (Slider::SliderStyle::LinearVertical, Slider::TextBoxBelow),
-      customLabel (String::empty, "using inheritance"),
-      customSlider (Slider::SliderStyle::LinearVertical, Slider::TextBoxBelow)
-
+      customLabel (String::empty, "using inheritance")
 {
     setSize (250, 600);
     
