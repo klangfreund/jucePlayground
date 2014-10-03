@@ -27,8 +27,6 @@ void CustomSlider::resized()
     Slider::resized();
     
     
-    LookAndFeel& lf = getLookAndFeel();
-    
     // Code copied from Slider::resized (const Rectangle<int>& localBounds, LookAndFeel& lf)
     
     // TextBox height
@@ -37,7 +35,7 @@ void CustomSlider::resized()
     // if (textBoxPos == TextBoxBelow)
     sliderRect.setBounds (0, 0, getWidth(), getHeight() - tbh);
     
-    const int indent = lf.getSliderThumbRadius (*this);
+    const int indent = getLookAndFeel().getSliderThumbRadius (*this);
     
     // if (isVertical())
     sliderRegionStart = sliderRect.getY() + indent;
@@ -101,22 +99,16 @@ bool CustomSlider::isAbsoluteDragMode (ModifierKeys mods) const
 
 void CustomSlider::handleAbsoluteDrag (const MouseEvent& e)
 {
-    const SliderStyle style = getSliderStyle();
+    // This is copied from the Slider::Pimpl::handleAbsoluteDrag().
     
-    const float mousePos = (isHorizontal() || style == RotaryHorizontalDrag) ? e.position.x : e.position.y;
+    const float mousePos = e.position.y;
+    // The newPos is the current mouse position measured from the top of the
+    // slider. newPos /in [0.0, 1.0]
     double newPos = (mousePos - sliderRegionStart) / (double) sliderRegionSize;
     
-    if (style == RotaryHorizontalDrag
-        || style == RotaryVerticalDrag
-        || style == IncDecButtons
-        || ((style == LinearHorizontal || style == LinearVertical || style == LinearBar || style == LinearBarVertical)
-            && ! getSliderSnapsToMousePosition()))
+    if (!getSliderSnapsToMousePosition())
     {
-        const float mouseDiff = (style == RotaryHorizontalDrag
-                                 || style == LinearHorizontal
-                                 || style == LinearBar)
-        ? e.position.x - mouseDragStartPos.x
-        : mouseDragStartPos.y - e.position.y;
+        const float mouseDiff = mouseDragStartPos.y - e.position.y;
         
         newPos = valueToProportionOfLength (valueOnMouseDown)
         + mouseDiff * (1.0 / getMouseDragSensitivity());
@@ -124,6 +116,7 @@ void CustomSlider::handleAbsoluteDrag (const MouseEvent& e)
     else
     {
         if (isVertical())
+            // Now, newPos is measured from the bottom of the slider.
             newPos = 1.0 - newPos;
     }
     
