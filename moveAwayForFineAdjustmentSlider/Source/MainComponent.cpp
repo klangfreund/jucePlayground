@@ -11,7 +11,7 @@
 
 //==============================================================================
 MainContentComponent::MainContentComponent()
-    : slider (Slider::SliderStyle::LinearVertical, Slider::TextBoxBelow)
+    // : slider (Slider::SliderStyle::LinearVertical, Slider::TextBoxBelow)
 {
     setSize (150, 600);
     

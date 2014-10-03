@@ -11,6 +11,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "CustomLookAndFeel.h"
+#include "CustomSlider.h"
 
 
 //==============================================================================
@@ -31,7 +32,7 @@ public:
 private:
     //==============================================================================
     CustomLookAndFeel customLookAndFeel;
-    Slider slider;
+    CustomSlider slider;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
 };

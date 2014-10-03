@@ -9,6 +9,9 @@
             file="Source/CustomLookAndFeel.cpp"/>
       <FILE id="Qg20oQ" name="CustomLookAndFeel.h" compile="0" resource="0"
             file="Source/CustomLookAndFeel.h"/>
+      <FILE id="t7uPEG" name="CustomSlider.cpp" compile="1" resource="0"
+            file="Source/CustomSlider.cpp"/>
+      <FILE id="Xhfhbq" name="CustomSlider.h" compile="0" resource="0" file="Source/CustomSlider.h"/>
       <FILE id="mHYAAc" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
       <FILE id="eJEfFt" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
