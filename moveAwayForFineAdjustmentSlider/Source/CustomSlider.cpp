@@ -22,6 +22,38 @@ CustomSlider::~CustomSlider()
 {
 }
 
+void CustomSlider::resized()
+{
+    Slider::resized();
+    
+    
+    LookAndFeel& lf = getLookAndFeel();
+    
+    // Code copied from Slider::resized (const Rectangle<int>& localBounds, LookAndFeel& lf)
+    
+    // TextBox height
+    const int tbh = jmax (0, jmin (getTextBoxHeight(), getHeight()));
+    
+    // if (textBoxPos == TextBoxBelow)
+    sliderRect.setBounds (0, 0, getWidth(), getHeight() - tbh);
+    
+    const int indent = lf.getSliderThumbRadius (*this);
+    
+    // if (isVertical())
+    sliderRegionStart = sliderRect.getY() + indent;
+    sliderRegionSize = jmax (1, sliderRect.getHeight() - indent * 2);
+    
+    sliderRect.setBounds (sliderRect.getX(), sliderRegionStart,
+                          sliderRect.getWidth(), sliderRegionSize);
+}
+
+void CustomSlider::setChangeNotificationOnlyOnRelease (bool onlyNotifyOnRelease)
+{
+    Slider::setChangeNotificationOnlyOnRelease (onlyNotifyOnRelease);
+    
+    sendChangeOnlyOnRelease = onlyNotifyOnRelease;
+}
+
 void CustomSlider::mouseDown (const MouseEvent& e)
 {
     Slider::mouseDown(e);
@@ -47,12 +79,10 @@ void CustomSlider::mouseDrag (const MouseEvent& e)
     if (isAbsoluteDragMode (e.mods) || (getMaximum() - getMinimum()) / sliderRegionSize < getInterval())
     {
         dragMode = absoluteDrag;
-        handleAbsoluteDrag (e); // -> valueWhenLastDragged
+        handleAbsoluteDrag (e); // This sets the valueWhenLastDragged
         
         valueWhenLastDragged = jlimit (getMinimum(), getMaximum(), valueWhenLastDragged);
         
-        // This would be set by Slider::setChangeNotificationOnlyOnRelease
-        bool sendChangeOnlyOnRelease = false;
         setValue (snapValue (valueWhenLastDragged, dragMode),
                   sendChangeOnlyOnRelease ? dontSendNotification : sendNotificationSync);
             // This calls pimpl->setValue()
@@ -98,29 +128,4 @@ void CustomSlider::handleAbsoluteDrag (const MouseEvent& e)
     }
     
     valueWhenLastDragged = proportionOfLengthToValue (jlimit (0.0, 1.0, newPos));
-}
-
-void CustomSlider::resized()
-{
-    Slider::resized();
-
-     
-    LookAndFeel& lf = getLookAndFeel();
-    
-    // Code copied from Slider::resized (const Rectangle<int>& localBounds, LookAndFeel& lf)
-    
-    // TextBox height
-     const int tbh = jmax (0, jmin (getTextBoxHeight(), getHeight()));
-     
-     // if (textBoxPos == TextBoxBelow)
-     sliderRect.setBounds (0, 0, getWidth(), getHeight() - tbh);
-     
-     const int indent = lf.getSliderThumbRadius (*this);
-     
-     // if (isVertical())
-     sliderRegionStart = sliderRect.getY() + indent;
-     sliderRegionSize = jmax (1, sliderRect.getHeight() - indent * 2);
-     
-     sliderRect.setBounds (sliderRect.getX(), sliderRegionStart,
-     sliderRect.getWidth(), sliderRegionSize);
 }

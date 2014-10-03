@@ -28,6 +28,8 @@ public:
     ~CustomSlider();
 
     void resized() override;
+    
+    void setChangeNotificationOnlyOnRelease (bool onlyNotifyOnRelease);
 
 private:
     void mouseDown (const MouseEvent& e) override;
@@ -35,6 +37,7 @@ private:
     bool isAbsoluteDragMode (ModifierKeys mods) const;
     void handleAbsoluteDrag (const MouseEvent& e);
 
+    bool sendChangeOnlyOnRelease {false};
     double valueOnMouseDown {0.0};
     double valueWhenLastDragged {0.0};
     Point<float> mouseDragStartPos;
