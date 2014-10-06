@@ -127,6 +127,8 @@ void CustomSlider::handleAbsoluteDrag (const MouseEvent& e)
 
 void CustomSlider::handleDragWithFineAdjustmentFurtherAway (const MouseEvent& e)
 {
+    // y position of the mouse
+    // -----------------------
     const float mousePos = e.position.y;
     const float mousePosDifference = mousePos - lastMousePos;
     
@@ -136,6 +138,8 @@ void CustomSlider::handleDragWithFineAdjustmentFurtherAway (const MouseEvent& e)
     // The max absolute value of posDifference is 1.
     double posDifference = - mousePosDifference / (double) sliderRegionSize;
     
+    // x position of the mouse
+    // -----------------------
     const float horizontalMousePosDifference =  std::abs (e.position.x - mouseDragStartPos.x);
     const float horizontalOffset = 20.0f;
     // If the current mouse position e.position.x is in the interval
@@ -145,6 +149,8 @@ void CustomSlider::handleDragWithFineAdjustmentFurtherAway (const MouseEvent& e)
         1.0f
         : 1.0f / (0.1f * (horizontalMousePosDifference - horizontalOffset) + 1.0f);
     
+    // Set valueWhenLastDragged
+    // ------------------------
     valueWhenLastDragged = jlimit(getMinimum(), getMaximum(), valueWhenLastDragged + (getMaximum() - getMinimum()) * (posDifference * minimizingFactor));
     
     lastMousePos = mousePos;
