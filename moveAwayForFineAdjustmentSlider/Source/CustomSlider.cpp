@@ -63,6 +63,8 @@ void CustomSlider::mouseDown (const MouseEvent& e)
         if (getMaximum() > getMinimum())
         {
             valueOnMouseDown = getValue();
+            valueWhenLastDragged = getValue();
+            lastMousePos = e.position.y;
         }
     }
 }
@@ -77,7 +79,8 @@ void CustomSlider::mouseDrag (const MouseEvent& e)
     if (isAbsoluteDragMode (e.mods) || (getMaximum() - getMinimum()) / sliderRegionSize < getInterval())
     {
         dragMode = absoluteDrag;
-        handleAbsoluteDrag (e); // This sets the valueWhenLastDragged
+        // handleAbsoluteDrag (e);
+        handleDragWithFineAdjustmentFurtherAway (e); // This sets the valueWhenLastDragged
         
         valueWhenLastDragged = jlimit (getMinimum(), getMaximum(), valueWhenLastDragged);
         
@@ -97,10 +100,9 @@ bool CustomSlider::isAbsoluteDragMode (ModifierKeys mods) const
                                && mods.testFlags (ModifierKeys::ctrlAltCommandModifiers));
 }
 
+// This is copied from the Slider::Pimpl::handleAbsoluteDrag().
 void CustomSlider::handleAbsoluteDrag (const MouseEvent& e)
 {
-    // This is copied from the Slider::Pimpl::handleAbsoluteDrag().
-    
     const float mousePos = e.position.y;
     // The newPos is the current mouse position measured from the top of the
     // slider. newPos /in [0.0, 1.0]
@@ -121,4 +123,29 @@ void CustomSlider::handleAbsoluteDrag (const MouseEvent& e)
     }
     
     valueWhenLastDragged = proportionOfLengthToValue (jlimit (0.0, 1.0, newPos));
+}
+
+void CustomSlider::handleDragWithFineAdjustmentFurtherAway (const MouseEvent& e)
+{
+    const float mousePos = e.position.y;
+    const float mousePosDifference = mousePos - lastMousePos;
+    
+    // A mousePosDifference > 0 (measured from the top to the bottom) means that
+    // the value (which is measured from the bottom to the top) needs to be decreased.
+    // That's the reason for the negation.
+    // The max absolute value of posDifference is 1.
+    double posDifference = - mousePosDifference / (double) sliderRegionSize;
+    
+    const float horizontalMousePosDifference =  std::abs (e.position.x - mouseDragStartPos.x);
+    const float horizontalOffset = 20.0f;
+    // If the current mouse position e.position.x is in the interval
+    // [mouseDragStartPos.x - horizontalOffset, mouseDragStartPos.x + horizontalOffset]
+    // there won't be a decrease of the slider movement.
+    const float minimizingFactor = horizontalMousePosDifference < horizontalOffset ?
+        1.0f
+        : 1.0f / (0.1f * (horizontalMousePosDifference - horizontalOffset) + 1.0f);
+    
+    valueWhenLastDragged = jlimit(getMinimum(), getMaximum(), valueWhenLastDragged + (getMaximum() - getMinimum()) * (posDifference * minimizingFactor));
+    
+    lastMousePos = mousePos;
 }
