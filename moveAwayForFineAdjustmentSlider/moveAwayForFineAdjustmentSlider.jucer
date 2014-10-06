@@ -5,17 +5,18 @@
               includeBinaryInAppConfig="1" jucerVersion="3.1.0">
   <MAINGROUP id="Y9eWQ4" name="moveAwayForFineAdjustmentSlider">
     <GROUP id="{CB05A2E4-5CD6-359E-6F28-47C2A9AF6AB6}" name="Source">
-      <FILE id="pd1XIp" name="CustomLookAndFeel.cpp" compile="1" resource="0"
-            file="Source/CustomLookAndFeel.cpp"/>
-      <FILE id="Qg20oQ" name="CustomLookAndFeel.h" compile="0" resource="0"
-            file="Source/CustomLookAndFeel.h"/>
-      <FILE id="t7uPEG" name="CustomSlider.cpp" compile="1" resource="0"
-            file="Source/CustomSlider.cpp"/>
-      <FILE id="Xhfhbq" name="CustomSlider.h" compile="0" resource="0" file="Source/CustomSlider.h"/>
+      <FILE id="jcGxf4" name="KlangfreundLookAndFeel.cpp" compile="1" resource="0"
+            file="Source/KlangfreundLookAndFeel.cpp"/>
+      <FILE id="lovHzW" name="KlangfreundLookAndFeel.h" compile="0" resource="0"
+            file="Source/KlangfreundLookAndFeel.h"/>
       <FILE id="mHYAAc" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
       <FILE id="eJEfFt" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="acwce2" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="OAE3Ky" name="MoveAwayForFineAdjustmentSlider.cpp" compile="1"
+            resource="0" file="Source/MoveAwayForFineAdjustmentSlider.cpp"/>
+      <FILE id="yKvnXL" name="MoveAwayForFineAdjustmentSlider.h" compile="0"
+            resource="0" file="Source/MoveAwayForFineAdjustmentSlider.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

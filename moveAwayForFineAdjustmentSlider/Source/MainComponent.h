@@ -10,8 +10,8 @@
 #define MAINCOMPONENT_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "CustomLookAndFeel.h"
-#include "CustomSlider.h"
+#include "KlangfreundLookAndFeel.h"
+#include "MoveAwayForFineAdjustmentSlider.h"
 
 
 //==============================================================================
@@ -31,8 +31,8 @@ public:
 
 private:
     //==============================================================================
-    CustomLookAndFeel customLookAndFeel;
-    CustomSlider slider;
+    KlangfreundLookAndFeel klangfreundLookAndFeel;
+    MoveAwayForFineAdjustmentSlider slider;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
 };

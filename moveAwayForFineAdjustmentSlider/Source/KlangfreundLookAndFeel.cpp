@@ -8,10 +8,10 @@
   ==============================================================================
 */
 
-#include "CustomLookAndFeel.h"
+#include "KlangfreundLookAndFeel.h"
 
 
-int CustomLookAndFeel::getSliderThumbRadius (Slider& slider)
+int KlangfreundLookAndFeel::getSliderThumbRadius (Slider& slider)
 {
     if (slider.isVertical())
     {
@@ -28,9 +28,14 @@ int CustomLookAndFeel::getSliderThumbRadius (Slider& slider)
     }
 }
 
-void CustomLookAndFeel::drawLinearSlider (Graphics& g, int x, int y, int width, int height,
-                                          float sliderPos, float minSliderPos, float maxSliderPos,
-                                          const Slider::SliderStyle style, Slider& slider)
+void KlangfreundLookAndFeel::drawLinearSlider (Graphics& g,
+                                               int x, int y,
+                                               int width, int height,
+                                               float sliderPos,
+                                               float minSliderPos,
+                                               float maxSliderPos,
+                                               const Slider::SliderStyle style,
+                                               Slider& slider)
 {
     // Draw the background of the slider
     //          ----------
@@ -46,11 +51,14 @@ void CustomLookAndFeel::drawLinearSlider (Graphics& g, int x, int y, int width, 
     }
 }
 
-void CustomLookAndFeel::drawLinearSliderBackground (Graphics& g, int x, int y, int width, int height,
-                                                    float /*sliderPos*/,
-                                                    float /*minSliderPos*/,
-                                                    float /*maxSliderPos*/,
-                                                    const Slider::SliderStyle /*style*/, Slider& slider)
+void KlangfreundLookAndFeel::drawLinearSliderBackground (Graphics& g,
+                                                         int x, int y,
+                                                         int width, int height,
+                                                         float /*sliderPos*/,
+                                                         float /*minSliderPos*/,
+                                                         float /*maxSliderPos*/,
+                                                         const Slider::SliderStyle /*style*/,
+                                                         Slider& slider)
 {
     // Draw the track of the slider
     //          -----
@@ -94,11 +102,11 @@ void CustomLookAndFeel::drawLinearSliderBackground (Graphics& g, int x, int y, i
     g.strokePath (indent, PathStrokeType (0.5f));
 }
 
-void CustomLookAndFeel::drawLinearSliderThumb (Graphics& g, int x, int y, int width,
-                                               int height, float sliderPos,
-                                               float minSliderPos, float maxSliderPos,
-                                               const Slider::SliderStyle style,
-                                               Slider& slider)
+void KlangfreundLookAndFeel::drawLinearSliderThumb (Graphics& g, int x, int y, int width,
+                                                    int height, float sliderPos,
+                                                    float minSliderPos, float maxSliderPos,
+                                                    const Slider::SliderStyle style,
+                                                    Slider& slider)
 {
     if (style == Slider::LinearVertical)
     {

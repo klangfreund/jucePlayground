@@ -15,13 +15,14 @@
 
 //==============================================================================
 /** Custom Look And Feel subclass.
+    At the moment it only contains a custom look for the vertical slider.
 
     From the JuceDemo:
     Simply override the methods you need to, anything else will be inherited from the base class.
     It's a good idea not to hard code your colours, use the findColour method along with appropriate
     ColourIds so you can set these on a per-component basis.
  */
-class CustomLookAndFeel    : public LookAndFeel_V3
+class KlangfreundLookAndFeel    : public LookAndFeel_V3
 {
 public:
     /** For a vertical slider, it returns height/2 of the thumb of the slider plus

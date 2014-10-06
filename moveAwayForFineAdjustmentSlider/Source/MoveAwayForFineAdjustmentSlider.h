@@ -21,11 +21,11 @@
     identical to the LookAndFeel one.
     But it's quite cumbersome... -> Go the look and feel path for a custom slider
 */
-class CustomSlider    : public Slider
+class MoveAwayForFineAdjustmentSlider    : public Slider
 {
 public:
-    CustomSlider();
-    ~CustomSlider();
+    MoveAwayForFineAdjustmentSlider();
+    ~MoveAwayForFineAdjustmentSlider();
 
     void resized() override;
     
@@ -57,7 +57,7 @@ private:
     int sliderRegionSize {0};
     Rectangle<int> sliderRect;
     
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (CustomSlider)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MoveAwayForFineAdjustmentSlider)
 };
 
 

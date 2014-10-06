@@ -202,13 +202,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\CustomLookAndFeel.cpp">
+    <ClCompile Include="..\..\Source\KlangfreundLookAndFeel.cpp">
       <Filter>moveAwayForFineAdjustmentSlider\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\MainComponent.cpp">
       <Filter>moveAwayForFineAdjustmentSlider\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Main.cpp">
+      <Filter>moveAwayForFineAdjustmentSlider\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\MoveAwayForFineAdjustmentSlider.cpp">
       <Filter>moveAwayForFineAdjustmentSlider\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_CharacterFunctions.cpp">
@@ -1101,10 +1104,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\CustomLookAndFeel.h">
+    <ClInclude Include="..\..\Source\KlangfreundLookAndFeel.h">
       <Filter>moveAwayForFineAdjustmentSlider\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\MainComponent.h">
+      <Filter>moveAwayForFineAdjustmentSlider\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\MoveAwayForFineAdjustmentSlider.h">
       <Filter>moveAwayForFineAdjustmentSlider\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_core\text\juce_CharacterFunctions.h">

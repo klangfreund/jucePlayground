@@ -9,20 +9,20 @@
 */
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "CustomSlider.h"
+#include "MoveAwayForFineAdjustmentSlider.h"
 
 //==============================================================================
-CustomSlider::CustomSlider()
+MoveAwayForFineAdjustmentSlider::MoveAwayForFineAdjustmentSlider()
     : Slider (Slider::SliderStyle::LinearVertical, Slider::TextBoxBelow)
 {
 }
 
 
-CustomSlider::~CustomSlider()
+MoveAwayForFineAdjustmentSlider::~MoveAwayForFineAdjustmentSlider()
 {
 }
 
-void CustomSlider::resized()
+void MoveAwayForFineAdjustmentSlider::resized()
 {
     Slider::resized();
     
@@ -45,14 +45,14 @@ void CustomSlider::resized()
                           sliderRect.getWidth(), sliderRegionSize);
 }
 
-void CustomSlider::setChangeNotificationOnlyOnRelease (bool onlyNotifyOnRelease)
+void MoveAwayForFineAdjustmentSlider::setChangeNotificationOnlyOnRelease (bool onlyNotifyOnRelease)
 {
     Slider::setChangeNotificationOnlyOnRelease (onlyNotifyOnRelease);
     
     sendChangeOnlyOnRelease = onlyNotifyOnRelease;
 }
 
-void CustomSlider::mouseDown (const MouseEvent& e)
+void MoveAwayForFineAdjustmentSlider::mouseDown (const MouseEvent& e)
 {
     Slider::mouseDown(e);
     
@@ -69,7 +69,7 @@ void CustomSlider::mouseDown (const MouseEvent& e)
     }
 }
 
-void CustomSlider::mouseDrag (const MouseEvent& e)
+void MoveAwayForFineAdjustmentSlider::mouseDrag (const MouseEvent& e)
 {
     DragMode dragMode = notDragging;
     
@@ -94,14 +94,14 @@ void CustomSlider::mouseDrag (const MouseEvent& e)
     }
 }
 
-bool CustomSlider::isAbsoluteDragMode (ModifierKeys mods) const
+bool MoveAwayForFineAdjustmentSlider::isAbsoluteDragMode (ModifierKeys mods) const
 {
     return getVelocityBasedMode() == (getVelocityModeIsSwappable()
                                && mods.testFlags (ModifierKeys::ctrlAltCommandModifiers));
 }
 
-// This is copied from the Slider::Pimpl::handleAbsoluteDrag().
-void CustomSlider::handleAbsoluteDrag (const MouseEvent& e)
+// This is copied from the Slider::Pimpl::handleAbsoluteDrag() and only here for reference.
+void MoveAwayForFineAdjustmentSlider::handleAbsoluteDrag (const MouseEvent& e)
 {
     const float mousePos = e.position.y;
     // The newPos is the current mouse position measured from the top of the
@@ -125,7 +125,7 @@ void CustomSlider::handleAbsoluteDrag (const MouseEvent& e)
     valueWhenLastDragged = proportionOfLengthToValue (jlimit (0.0, 1.0, newPos));
 }
 
-void CustomSlider::handleDragWithFineAdjustmentFurtherAway (const MouseEvent& e)
+void MoveAwayForFineAdjustmentSlider::handleDragWithFineAdjustmentFurtherAway (const MouseEvent& e)
 {
     // y position of the mouse
     // -----------------------

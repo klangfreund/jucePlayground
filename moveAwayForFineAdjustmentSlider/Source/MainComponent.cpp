@@ -19,7 +19,7 @@ MainContentComponent::MainContentComponent()
     // -----------------
     // setLookAndFeel is a member function of Component.
     // Each Component can be assigned with its own LookAndFeel.
-    slider.setLookAndFeel (&customLookAndFeel);
+    slider.setLookAndFeel (&klangfreundLookAndFeel);
     slider.setRange (-15.0, 15.0, 0.01);
     
     addAndMakeVisible (&slider);
