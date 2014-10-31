@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="VuWvQQ" name="overlappingTabs" projectType="guiapp" version="1.0.0"
+              bundleIdentifier="com.yourcompany.overlappingTabs" includeBinaryInAppConfig="1"
+              jucerVersion="3.1.0">
+  <MAINGROUP id="F3aK05" name="overlappingTabs">
+    <GROUP id="{4A68EE1E-7604-1703-B82A-70570BBF0A3C}" name="Source">
+      <FILE id="B2b033" name="SecondComponent.cpp" compile="1" resource="0"
+            file="Source/SecondComponent.cpp"/>
+      <FILE id="JXoiUP" name="SecondComponent.h" compile="0" resource="0"
+            file="Source/SecondComponent.h"/>
+      <FILE id="r2GYPo" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
+      <FILE id="AiPL3j" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="j9OI5e" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" osxSDK="10.9 SDK" osxCompatibility="default" osxArchitecture="default"
+                       isDebug="1" optimisation="1" targetName="overlappingTabs"/>
+        <CONFIGURATION name="Release" osxSDK="10.9 SDK" osxCompatibility="default" osxArchitecture="default"
+                       isDebug="0" optimisation="2" targetName="overlappingTabs"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../../../res/projects_dev/JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+    <VS2013 targetFolder="Builds/VisualStudio2013">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="1" optimisation="1" targetName="overlappingTabs"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="0" optimisation="2" targetName="overlappingTabs"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../../res/projects_dev/JUCE/modules"/>
+      </MODULEPATHS>
+    </VS2013>
+    <LINUX_MAKE targetFolder="Builds/Linux">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" libraryPath="/usr/X11R6/lib/" isDebug="1" optimisation="1"
+                       targetName="overlappingTabs"/>
+        <CONFIGURATION name="Release" libraryPath="/usr/X11R6/lib/" isDebug="0" optimisation="2"
+                       targetName="overlappingTabs"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../../../res/projects_dev/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../../res/projects_dev/JUCE/modules"/>
+      </MODULEPATHS>
+    </LINUX_MAKE>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULES id="juce_core" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_cryptography" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_data_structures" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_events" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="1"/>
+    <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="1"/>
+  </MODULES>
+  <JUCEOPTIONS/>
+</JUCERPROJECT>

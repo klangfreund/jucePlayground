@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2013
+Project("{6B60E0C3-326A-86CE-EBFE-373F9043BA62}") = "overlappingTabs", "overlappingTabs.vcxproj", "{C121BEC8-CC9C-1248-0AD8-D6BA75DE6204}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C121BEC8-CC9C-1248-0AD8-D6BA75DE6204}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C121BEC8-CC9C-1248-0AD8-D6BA75DE6204}.Debug|Win32.Build.0 = Debug|Win32
+		{C121BEC8-CC9C-1248-0AD8-D6BA75DE6204}.Release|Win32.ActiveCfg = Release|Win32
+		{C121BEC8-CC9C-1248-0AD8-D6BA75DE6204}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
