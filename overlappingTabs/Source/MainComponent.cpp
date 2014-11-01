@@ -12,18 +12,13 @@
 //==============================================================================
 MainContentComponent::MainContentComponent()
 {
-    setSize (300, 150);
-    
     LookAndFeel::setDefaultLookAndFeel(&lookAndFeelV3);
+    // // Is this the most elegant solution?:
+    // secondComponent.setLookAndFeel(&lookAndFeelV3);
     
     addAndMakeVisible(&secondComponent);
     
-    // Workaround 1:
-    // Move setSize() below the LookAndFeel change.
-    
-    // // Workaround 2
-    // // (Not quite safe)
-    // secondComponent.setLookAndFeel(&lookAndFeelV3);
+    setSize (300, 150);
 }
 
 MainContentComponent::~MainContentComponent()
@@ -37,5 +32,5 @@ void MainContentComponent::paint (Graphics& g)
 
 void MainContentComponent::resized()
 {
-    secondComponent.setBounds(getBounds());
+    secondComponent.setTopLeftPosition(0, 0);
 }

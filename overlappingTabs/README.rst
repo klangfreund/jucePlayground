@@ -5,8 +5,8 @@ Just a quick demonstration of an issue with overlapping tabs.
 
 .. image:: docs/images/01_the_issue.png
 
-As soon as the window is resized or the 2nd or 3rd tab is
-clicked, the tabs are drawn correctly:
+As soon as the 2nd or 3rd tab is
+clicked the tabs are drawn correctly:
 
 .. image:: docs/images/02_fine.png
 

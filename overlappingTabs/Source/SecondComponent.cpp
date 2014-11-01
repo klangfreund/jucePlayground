@@ -15,7 +15,8 @@
 SecondComponent::SecondComponent()
 {
     addAndMakeVisible(&myTabbedComponent);
-
+    
+    setSize(290, 150);
 }
 
 SecondComponent::~SecondComponent()

@@ -30,8 +30,9 @@ public:
 
 private:
     //==============================================================================
-    SecondComponent secondComponent;
     LookAndFeel_V3 lookAndFeelV3;
+    SecondComponent secondComponent;
+
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
 };
