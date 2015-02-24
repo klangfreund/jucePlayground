@@ -60,6 +60,7 @@ void ComponentTooltip::buttonClicked (Button* button)
         else
         {
             stopTimer();
+            hideTip();
         }
     }
 }

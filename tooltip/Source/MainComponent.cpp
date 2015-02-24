@@ -15,7 +15,8 @@ MainContentComponent::MainContentComponent()
     componentTooltip (this),
     juceTooltipButton ("JUCE tooltips")
 {
-    dummyButton.setTooltip ("A button that does...\r absolutely nothing.");
+    dummyButton.setTooltip ("A button that does...\r"
+                            "absolutely nothing.");
     componentTooltip.addTooltip (&dummyButton, tooltipGenerator.generateTextOnlyComponent (dummyButton.getTooltip()));
     addAndMakeVisible (dummyButton);
     
@@ -24,7 +25,10 @@ MainContentComponent::MainContentComponent()
     componentTooltip.addTooltip (&dummySlider, tooltipGenerator.generateTextOnlyComponent (dummySlider.getTooltip()));
     addAndMakeVisible (dummySlider);
     
-    componentTooltip.addTooltip(&componentTooltip, tooltipGenerator.generateTextOnlyComponent ("Enables or disables the help bubble you are seeing right now."));
+    componentTooltip.addTooltip (&componentTooltip, 
+                                 tooltipGenerator.generateTextOnlyComponent (
+                                    "Enables or disables this help bubble\r"
+                                    "you are seeing right now."));
     addAndMakeVisible (componentTooltip);
     
     juceTooltipButton.setClickingTogglesState (true);
@@ -34,7 +38,7 @@ MainContentComponent::MainContentComponent()
     juceTooltipButton.setToggleState (false, NotificationType::sendNotification);
     addAndMakeVisible (juceTooltipButton);
     
-    setSize (600, 400);
+    setSize (400, 220);
 }
 
 MainContentComponent::~MainContentComponent()

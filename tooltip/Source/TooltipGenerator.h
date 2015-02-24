@@ -26,12 +26,12 @@ public:
 
 private:
     /**
-        To properly delete all generated text editors.
+        To properly delete all generated labels.
      
         Having this and the member functions be static did not work with the
-        JUCE leak detectors.
+        JUCE leak detector.
      */
-    OwnedArray<Label> labels;
+    OwnedArray <Label> labels;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TooltipGenerator)
 };

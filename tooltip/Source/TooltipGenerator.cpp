@@ -22,18 +22,36 @@ TooltipGenerator::~TooltipGenerator()
 
 Component* TooltipGenerator::generateTextOnlyComponent (String text)
 {
-    Label* t = new Label();
-    t->setSize (180, 100);
-    t->setColour(Label::backgroundColourId, Colours::transparentBlack);
-    t->setColour(Label::textColourId, Colours::white);
-    t->setText (text, NotificationType::dontSendNotification);
-    t->setJustificationType (Justification::centred);
-    t->setMinimumHorizontalScale (1.0f);
-    t->setBorderSize (BorderSize <int> (5, 5, 5, 5));
-    //t->setScrollbarsShown (false);
-    //t->setSize (t->getTextWidth(), t->getTextHeight() + 10);
+    Label* l = new Label();
+
+    // Colours
+    l->setColour(Label::backgroundColourId, Colours::transparentBlack);
+    l->setColour(Label::textColourId, Colours::white);
     
-    labels.add (t);
+    // Text
+    l->setText (text, NotificationType::dontSendNotification);
+    l->setMinimumHorizontalScale (1.0f);
+    l->setJustificationType (Justification::verticallyCentred);
+    l->setBorderSize (BorderSize <int> (5, 5, 5, 5));
     
-    return t;
+    // Figure out the size of the component
+    Font f = l->getFont();
+    
+    StringArray lines;
+    lines.addLines (text); // text is split wherever a \r or \n occur.
+    
+    int width = 0;
+    for (int i = 0; i < lines.size(); ++i) 
+    {
+        width = jmax(width, f.getStringWidth (lines[i]));
+    }
+    
+    const int nrOfLines = lines.size();
+    const int height = nrOfLines * f.getHeight();
+    l->setSize (width + 10 + l->getBorderSize().getLeftAndRight(), 
+                height + l->getBorderSize().getTopAndBottom());
+    
+    labels.add (l);
+    
+    return l;
 }
