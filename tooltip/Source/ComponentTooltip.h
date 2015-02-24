@@ -12,6 +12,7 @@
 #define COMPONENTTOOLTIP_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include <map>
 
 //==============================================================================
 /**
@@ -24,7 +25,8 @@
       TooltipWindow and not close to the mouse cursor.
 */
 class ComponentTooltip    : public Component,
-                            public Button::Listener
+                            private Button::Listener,
+                            private Timer
 {
 public:
     ComponentTooltip (Component* parentComponent = nullptr);
@@ -32,12 +34,40 @@ public:
 
     void paint (Graphics&);
     void resized();
+    
+    /**
+     @param description It takes the ownership of this component.
+     */
+    void addTooltip (Component* const componentToDescribe, Component* const tip);
 
 private:
-    virtual void buttonClicked (Button*);
+    void buttonClicked (Button*);
+    void timerCallback();
+    
+    void displayTip (Component* tip);
+    void hideTip();
+    bool tipIsVisible();
     
     Component* parentComponent;
     TextButton enableTooltipButton;
+    ScopedPointer<CallOutBox> tipBox;
+    
+    //std::map <Component*, Component*> tooltips; // {{nullptr, nullptr}};
+    HashMap <Component*, Component*> tooltips;
+        // HashMap does not work with ScopedPointer<Component> as second argument.
+    
+    int millisecondsBeforeTipAppears {700};
+    
+    // Used in the timerCallback()
+    Component* lastComponentUnderMouse {nullptr};
+    Component* lastTipUnderMouse {nullptr};
+    Component* currentTip {nullptr};
+    int lastMouseClicks {0};
+    int lastMouseWheelMoves {0};
+    Point<float> lastMousePos {0.0, 0.0};
+    unsigned int lastCompChangeTime;
+    unsigned int lastHideTime;
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ComponentTooltip)
 };
 

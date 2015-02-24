@@ -7,7 +7,7 @@
 */
 
 #include "MainComponent.h"
-
+#include "TooltipGenerator.h"
 
 //==============================================================================
 MainContentComponent::MainContentComponent()
@@ -17,19 +17,24 @@ MainContentComponent::MainContentComponent()
     juceTooltipButton ("JUCE tooltips")
 {
     dummyButton.setTooltip ("This button does absolutely nothing.");
+    componentTooltip.addTooltip (&dummyButton, TooltipGenerator::generateTextOnlyComponent (dummyButton.getTooltip()));
     addAndMakeVisible (dummyButton);
     
     dummySlider.setRange (0.0, 10.0);
     dummySlider.setTooltip ("A slider with no influence at all.");
+    componentTooltip.addTooltip (&dummySlider, TooltipGenerator::generateTextOnlyComponent (dummySlider.getTooltip()));
     addAndMakeVisible (dummySlider);
     
     addAndMakeVisible (componentTooltip);
     
     juceTooltipButton.setClickingTogglesState (true);
     juceTooltipButton.setTooltip ("Enables or disables the JUCE tooltip window.");
+    componentTooltip.addTooltip (&juceTooltipButton, TooltipGenerator::generateTextOnlyComponent (juceTooltipButton.getTooltip()));
     juceTooltipButton.addListener (this);
     juceTooltipButton.setToggleState (false, NotificationType::sendNotification);
     addAndMakeVisible (juceTooltipButton);
+    
+    componentTooltip.addTooltip (&dummyButton, TooltipGenerator::generateTextOnlyComponent(dummyButton.getTooltip()));
     
     setSize (600, 400);
 }

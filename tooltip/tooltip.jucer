@@ -13,6 +13,10 @@
             file="Source/MainComponent.cpp"/>
       <FILE id="igVg3T" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
       <FILE id="sm3fpQ" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="AVEnsN" name="TooltipGenerator.cpp" compile="1" resource="0"
+            file="Source/TooltipGenerator.cpp"/>
+      <FILE id="HJFe8G" name="TooltipGenerator.h" compile="0" resource="0"
+            file="Source/TooltipGenerator.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
