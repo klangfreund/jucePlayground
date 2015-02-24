@@ -7,7 +7,6 @@
 */
 
 #include "MainComponent.h"
-#include "TooltipGenerator.h"
 
 //==============================================================================
 MainContentComponent::MainContentComponent()
@@ -16,25 +15,24 @@ MainContentComponent::MainContentComponent()
     componentTooltip (this),
     juceTooltipButton ("JUCE tooltips")
 {
-    dummyButton.setTooltip ("This button does absolutely nothing.");
-    componentTooltip.addTooltip (&dummyButton, TooltipGenerator::generateTextOnlyComponent (dummyButton.getTooltip()));
+    dummyButton.setTooltip ("A button that does...\r absolutely nothing.");
+    componentTooltip.addTooltip (&dummyButton, tooltipGenerator.generateTextOnlyComponent (dummyButton.getTooltip()));
     addAndMakeVisible (dummyButton);
     
     dummySlider.setRange (0.0, 10.0);
     dummySlider.setTooltip ("A slider with no influence at all.");
-    componentTooltip.addTooltip (&dummySlider, TooltipGenerator::generateTextOnlyComponent (dummySlider.getTooltip()));
+    componentTooltip.addTooltip (&dummySlider, tooltipGenerator.generateTextOnlyComponent (dummySlider.getTooltip()));
     addAndMakeVisible (dummySlider);
     
+    componentTooltip.addTooltip(&componentTooltip, tooltipGenerator.generateTextOnlyComponent ("Enables or disables the help bubble you are seeing right now."));
     addAndMakeVisible (componentTooltip);
     
     juceTooltipButton.setClickingTogglesState (true);
     juceTooltipButton.setTooltip ("Enables or disables the JUCE tooltip window.");
-    componentTooltip.addTooltip (&juceTooltipButton, TooltipGenerator::generateTextOnlyComponent (juceTooltipButton.getTooltip()));
+    componentTooltip.addTooltip (&juceTooltipButton, tooltipGenerator.generateTextOnlyComponent (juceTooltipButton.getTooltip()));
     juceTooltipButton.addListener (this);
     juceTooltipButton.setToggleState (false, NotificationType::sendNotification);
     addAndMakeVisible (juceTooltipButton);
-    
-    componentTooltip.addTooltip (&dummyButton, TooltipGenerator::generateTextOnlyComponent(dummyButton.getTooltip()));
     
     setSize (600, 400);
 }
@@ -60,7 +58,7 @@ void MainContentComponent::resized()
     
     dummySlider.setBounds (10, dummyButton.getBottom() + 10, getWidth() - 20, 40);
     
-    componentTooltip.setBounds(10, getHeight() - 30, 80, 20);
+    componentTooltip.setBounds(10, getHeight() - 30, 120, 20);
     
     juceTooltipButton.setBounds(componentTooltip.getRight() + 10, getHeight() - 30, 80, 20);
     juceTooltipButton.changeWidthToFitText();

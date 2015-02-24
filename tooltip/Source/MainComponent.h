@@ -11,6 +11,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "ComponentTooltip.h"
+#include "TooltipGenerator.h"
 
 
 //==============================================================================
@@ -36,8 +37,11 @@ private:
     TextButton dummyButton;
     Slider dummySlider;
     
+    // Klangfreund Tooltip
     ComponentTooltip componentTooltip;
+    TooltipGenerator tooltipGenerator;
     
+    // JUCE Tooltip
     TextButton juceTooltipButton;
     ScopedPointer<TooltipWindow> tooltipWindow;
     

@@ -22,9 +22,17 @@ public:
     TooltipGenerator();
     ~TooltipGenerator();
 
-    static Component* generateTextOnlyComponent (String text);
+    Component* generateTextOnlyComponent (String text);
 
 private:
+    /**
+        To properly delete all generated text editors.
+     
+        Having this and the member functions be static did not work with the
+        JUCE leak detectors.
+     */
+    OwnedArray<Label> labels;
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TooltipGenerator)
 };
 

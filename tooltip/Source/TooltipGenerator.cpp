@@ -22,12 +22,18 @@ TooltipGenerator::~TooltipGenerator()
 
 Component* TooltipGenerator::generateTextOnlyComponent (String text)
 {
-    TextEditor* t = new TextEditor();
-    t->setSize (200, 100);
-    t->setColour(TextEditor::backgroundColourId, Colours::transparentBlack);
-    t->setColour(TextEditor::textColourId, Colours::white);
-    t->setReadOnly (true);
-    t->setText (text);
+    Label* t = new Label();
+    t->setSize (180, 100);
+    t->setColour(Label::backgroundColourId, Colours::transparentBlack);
+    t->setColour(Label::textColourId, Colours::white);
+    t->setText (text, NotificationType::dontSendNotification);
+    t->setJustificationType (Justification::centred);
+    t->setMinimumHorizontalScale (1.0f);
+    t->setBorderSize (BorderSize <int> (5, 5, 5, 5));
+    //t->setScrollbarsShown (false);
+    //t->setSize (t->getTextWidth(), t->getTextHeight() + 10);
+    
+    labels.add (t);
     
     return t;
 }

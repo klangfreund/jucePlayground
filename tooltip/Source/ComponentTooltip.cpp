@@ -14,26 +14,24 @@
 //==============================================================================
 ComponentTooltip::ComponentTooltip (Component* parentComponent_)
   : parentComponent (parentComponent_),
-    enableTooltipButton ("help")
+    enableTooltipButton ("Klangfreund tooltips")
 {
     enableTooltipButton.setClickingTogglesState (true);
     enableTooltipButton.addListener (this);
-    // enableTooltipButton.setToggleState (false, NotificationType::sendNotification);
+    enableTooltipButton.setToggleState (true, NotificationType::sendNotification);
     addAndMakeVisible (enableTooltipButton);
 }
 
 ComponentTooltip::~ComponentTooltip()
 {
-//    for (const auto& mapPair : tooltips)
-//    {
-//        delete mapPair.second;
-//    }
-    HashMap<Component*, Component*>::Iterator i (tooltips);
+    hideTip();
     
-    while (i.next())
-    {
-        delete i.getValue();
-    }
+//    HashMap<Component*, Component*>::Iterator i (tooltips);
+//    
+//    while (i.next())
+//    {
+//        delete i.getValue();
+//    }
 }
 
 void ComponentTooltip::paint (Graphics& g)
@@ -97,6 +95,12 @@ void ComponentTooltip::timerCallback()
     Component* newTip = nullptr;
     if (newComp != nullptr)
         newTip = tooltips [newComp];
+    
+    // If the component could't be found, the parent might have been registered.
+    if (newTip == nullptr && newComp != nullptr)
+    {
+        newTip = tooltips [newComp->getParentComponent()];
+    }
 
     const bool tipChanged = (newTip != lastTipUnderMouse || newComp != lastComponentUnderMouse);
     lastComponentUnderMouse = newComp;
