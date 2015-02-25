@@ -10,7 +10,7 @@
 #define MAINCOMPONENT_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "ComponentTooltip.h"
+#include "TooltipWithComponents.h"
 #include "TooltipGenerator.h"
 
 
@@ -38,7 +38,7 @@ private:
     Slider dummySlider;
     
     // Klangfreund Tooltip
-    ComponentTooltip componentTooltip;
+    TooltipWithComponents tooltip;
     TooltipGenerator tooltipGenerator;
     
     // JUCE Tooltip

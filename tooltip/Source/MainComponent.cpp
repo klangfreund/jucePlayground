@@ -12,28 +12,29 @@
 MainContentComponent::MainContentComponent()
   : dummyButton ("Dummy"),
     dummySlider (Slider::LinearHorizontal, Slider::TextBoxLeft),
-    componentTooltip (this),
+    tooltip (this),
     juceTooltipButton ("JUCE tooltips")
 {
     dummyButton.setTooltip ("A button that does...\r"
                             "absolutely nothing.");
-    componentTooltip.addTooltip (&dummyButton, tooltipGenerator.generateTextOnlyComponent (dummyButton.getTooltip()));
+    tooltip.addTooltip (&dummyButton, tooltipGenerator.generateTextOnlyComponent (dummyButton.getTooltip()));
     addAndMakeVisible (dummyButton);
     
     dummySlider.setRange (0.0, 10.0);
     dummySlider.setTooltip ("A slider with no influence at all.");
-    componentTooltip.addTooltip (&dummySlider, tooltipGenerator.generateTextOnlyComponent (dummySlider.getTooltip()));
+    tooltip.addTooltip (&dummySlider, tooltipGenerator.generateTextOnlyComponent (dummySlider.getTooltip()));
     addAndMakeVisible (dummySlider);
     
-    componentTooltip.addTooltip (&componentTooltip, 
+    tooltip.addTooltip (&tooltip, 
                                  tooltipGenerator.generateTextOnlyComponent (
-                                    "Enables or disables this help bubble\r"
-                                    "you are seeing right now."));
-    addAndMakeVisible (componentTooltip);
+                                    "Click to activate\r"
+                                    "or deactivate\r"
+                                    "this help bubble."));
+    addAndMakeVisible (tooltip);
     
     juceTooltipButton.setClickingTogglesState (true);
     juceTooltipButton.setTooltip ("Enables or disables the JUCE tooltip window.");
-    componentTooltip.addTooltip (&juceTooltipButton, tooltipGenerator.generateTextOnlyComponent (juceTooltipButton.getTooltip()));
+    tooltip.addTooltip (&juceTooltipButton, tooltipGenerator.generateTextOnlyComponent (juceTooltipButton.getTooltip()));
     juceTooltipButton.addListener (this);
     juceTooltipButton.setToggleState (false, NotificationType::sendNotification);
     addAndMakeVisible (juceTooltipButton);
@@ -62,9 +63,9 @@ void MainContentComponent::resized()
     
     dummySlider.setBounds (10, dummyButton.getBottom() + 10, getWidth() - 20, 40);
     
-    componentTooltip.setBounds(10, getHeight() - 30, 120, 20);
+    tooltip.setBounds(10, getHeight() - 30, 120, 20);
     
-    juceTooltipButton.setBounds(componentTooltip.getRight() + 10, getHeight() - 30, 80, 20);
+    juceTooltipButton.setBounds(tooltip.getRight() + 10, getHeight() - 30, 80, 20);
     juceTooltipButton.changeWidthToFitText();
 }
 

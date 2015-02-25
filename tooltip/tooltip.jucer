@@ -5,10 +5,6 @@
               jucerVersion="3.1.1">
   <MAINGROUP id="WN58TG" name="tooltip">
     <GROUP id="{095428C6-2725-EA1D-A8C5-9C873940C7BC}" name="Source">
-      <FILE id="VeqpoG" name="ComponentTooltip.cpp" compile="1" resource="0"
-            file="Source/ComponentTooltip.cpp"/>
-      <FILE id="jqfksz" name="ComponentTooltip.h" compile="0" resource="0"
-            file="Source/ComponentTooltip.h"/>
       <FILE id="sntkwD" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
       <FILE id="igVg3T" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
@@ -17,6 +13,10 @@
             file="Source/TooltipGenerator.cpp"/>
       <FILE id="HJFe8G" name="TooltipGenerator.h" compile="0" resource="0"
             file="Source/TooltipGenerator.h"/>
+      <FILE id="VeqpoG" name="TooltipWithComponents.cpp" compile="1" resource="0"
+            file="Source/TooltipWithComponents.cpp"/>
+      <FILE id="jqfksz" name="TooltipWithComponents.h" compile="0" resource="0"
+            file="Source/TooltipWithComponents.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

@@ -1,18 +1,17 @@
 /*
   ==============================================================================
 
-    ComponentTooltip.h
+    TooltipWithComponents.h
     Created: 23 Feb 2015 3:17:27pm
     Author:  Samuel Gaehwiler
 
   ==============================================================================
 */
 
-#ifndef COMPONENTTOOLTIP_H_INCLUDED
-#define COMPONENTTOOLTIP_H_INCLUDED
+#ifndef TOOLTIPWITHCOMPONENTS_H_INCLUDED
+#define TOOLTIPWITHCOMPONENTS_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include <map>
 
 //==============================================================================
 /**
@@ -24,13 +23,13 @@
     - The help bubble will always be at the same position, close to the
       TooltipWindow and not close to the mouse cursor.
 */
-class ComponentTooltip    : public Component,
-                            private Button::Listener,
-                            private Timer
+class TooltipWithComponents    : public Component,
+                                 private Button::Listener,
+                                 private Timer
 {
 public:
-    ComponentTooltip (Component* parentComponent = nullptr);
-    ~ComponentTooltip();
+    TooltipWithComponents (Component* parentComponent = nullptr);
+    ~TooltipWithComponents();
 
     void paint (Graphics&);
     void resized();
@@ -68,8 +67,8 @@ private:
     unsigned int lastCompChangeTime;
     unsigned int lastHideTime;
     
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ComponentTooltip)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TooltipWithComponents)
 };
 
 
-#endif  // COMPONENTTOOLTIP_H_INCLUDED
+#endif  // TOOLTIPWITHCOMPONENTS_H_INCLUDED

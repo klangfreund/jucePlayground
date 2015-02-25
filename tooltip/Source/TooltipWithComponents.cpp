@@ -1,7 +1,7 @@
 /*
   ==============================================================================
 
-    ComponentTooltip.cpp
+    TooltipWithComponents.cpp
     Created: 23 Feb 2015 3:17:27pm
     Author:  Samuel Gaehwiler
 
@@ -9,10 +9,10 @@
 */
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "ComponentTooltip.h"
+#include "TooltipWithComponents.h"
 
 //==============================================================================
-ComponentTooltip::ComponentTooltip (Component* parentComponent_)
+TooltipWithComponents::TooltipWithComponents (Component* parentComponent_)
   : parentComponent (parentComponent_),
     enableTooltipButton ("Klangfreund tooltips")
 {
@@ -22,7 +22,7 @@ ComponentTooltip::ComponentTooltip (Component* parentComponent_)
     addAndMakeVisible (enableTooltipButton);
 }
 
-ComponentTooltip::~ComponentTooltip()
+TooltipWithComponents::~TooltipWithComponents()
 {
     hideTip();
     
@@ -34,21 +34,21 @@ ComponentTooltip::~ComponentTooltip()
 //    }
 }
 
-void ComponentTooltip::paint (Graphics& g)
+void TooltipWithComponents::paint (Graphics& g)
 {
 }
 
-void ComponentTooltip::resized()
+void TooltipWithComponents::resized()
 {
     enableTooltipButton.setBounds (0, 0, getWidth(), getHeight());
 }
 
-void ComponentTooltip::addTooltip (Component* const componentToDescribe, Component* const tip)
+void TooltipWithComponents::addTooltip (Component* const componentToDescribe, Component* const tip)
 {
     tooltips.set (componentToDescribe, tip);
 }
 
-void ComponentTooltip::buttonClicked (Button* button)
+void TooltipWithComponents::buttonClicked (Button* button)
 {
     if (button == & enableTooltipButton)
     {
@@ -65,7 +65,7 @@ void ComponentTooltip::buttonClicked (Button* button)
     }
 }
 
-void ComponentTooltip::timerCallback()
+void TooltipWithComponents::timerCallback()
 {
     // Big chunks of this code are taken from TooltipWindow::timerCallback().
 
@@ -150,7 +150,7 @@ void ComponentTooltip::timerCallback()
     }
 }
 
-void ComponentTooltip::displayTip (Component* tip)
+void TooltipWithComponents::displayTip (Component* tip)
 {
     if (tip != nullptr)
     {
@@ -159,13 +159,13 @@ void ComponentTooltip::displayTip (Component* tip)
     }
 }
 
-void ComponentTooltip::hideTip()
+void TooltipWithComponents::hideTip()
 {
     tipBox = nullptr;
     currentTip = nullptr;
 }
 
-bool ComponentTooltip::tipIsVisible()
+bool TooltipWithComponents::tipIsVisible()
 {
     return tipBox.get() != nullptr;
 }
